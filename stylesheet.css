@@ -156,7 +156,7 @@ h3 {
     width: 300px;                                       /* needs to be divisible by the number of columns we're aiming for - in our case because our grid is 15*15, we need to be able to divide both our width and height by 15 */
     height: 300px;
     background-color: rgb(54, 54, 54);
-    background-image: url(/SpessInvaders/Assets/background.gif);
+    background-image: url(/Assets/background.gif);
     padding: 1em;
     margin: 5px;
     }
@@ -168,20 +168,20 @@ h3 {
 
 .shooter {
     /* content:url(https://picsum.photos/200/300)           placeholder test to check image integration - because this is resized to fit out element we thankfully don't need to figure out pixel widths */
-    content:url(/SpessInvaders/Assets/pdc.gif)              /* utilising the hidden image within the html as our 'pdc' */
+    content:url(/Assets/pdc.gif)              /* utilising the hidden image within the html as our 'pdc' */
 
 }
 .invader {                                                  /* removed background colours as no longer needed for troubleshooting */
     border-radius: 10px;
-    content:url(/SpessInvaders/Assets/torpedo.gif)
+    content:url(/Assets/torpedo.gif)
 }
 
 .boom {
-    content:url(/SpessInvaders/Assets/boom.gif)
+    content:url(/Assets/boom.gif)
 }
 
 .laser {
-    content:url(/SpessInvaders/Assets/pdcBullet.png)
+    content:url(/Assets/pdcBullet.png)
 }
 
 /* will want to consider better background options, as well as potentially looking into audio/video playback for victory/initial etc. [background video & styling only] */
