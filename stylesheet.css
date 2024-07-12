@@ -1,0 +1,207 @@
+#bg {
+    min-width: 100vw;
+    min-height: 100vh;
+    position: fixed;                                    /* video isn't centered, but I kind of like the off-center effect this creates */
+    object-fit: cover;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+    
+}
+
+#container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 95vh;                          /* set so our rows are 95% of the screen height, but columns are split in two */
+    gap: 0.5em;
+    grid-template-areas: 
+    'outerbox discussion'
+    'outerbox discussion'
+    ;
+}
+
+#outerbox{                                              /* consider laying out components in a grid format, with the .grid game box in the center. Room for additional components if laid out 3x3 */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 75% 25%; 
+    align-items: center;
+    justify-content: center;
+    grid-area: outerbox;
+    background-color: #2b2b2b4d;
+    color: aliceblue;
+    box-shadow: 0 0 5px #30303085; 
+    text-shadow: 1px 2px 2px black;
+    border: 3px solid black;
+    margin: 5px 5px;
+    grid-template-areas:
+    'la gameBox ra'
+    '. message .'
+    ;
+}
+
+
+#gameOverMessage{
+    grid-area: message;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    font-size: calc(1vw + 1vh);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-shadow: 1px 2px 2px black;
+}
+
+#la{
+    grid-area: la;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    font-size: calc(1vw + 1vh);
+    margin: 5px 5px;
+    padding: 1em;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-shadow: 1px 2px 2px black;
+}
+
+#ra{
+    grid-area: ra;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    font-size: calc(1vw + 1vh);
+        padding: 1em;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-shadow: 1px 2px 2px black;
+}
+
+                                                    /* These could've been under one universal text rule, but wanted flexibility to adjust to see if making particular components different reflected on the content better */
+
+#discussion{                                        /* perhaps scale these using container queries? article on stackoverflow, check out tomorrow - nah, turns out needs additional preloading for CSS, don't have time to learn before submission date */
+    grid-area: discussion;
+    border: 3px solid black;
+    margin: 5px 5px;
+    background-color: #2b2b2b4d;
+    color: aliceblue;
+    box-shadow: 0 0 5px #30303085; 
+    text-shadow: 1px 2px 2px black;
+    font-size: calc(1vw + 1vh);
+}
+
+
+#startDiscussion{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    padding: 1em 0;
+    margin: 5px;
+}
+
+#round1Discussion{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    padding: 1em 0;
+    margin: 5px;
+}
+
+#finaDiscussion {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    padding: 1em 0;
+    margin: 5px;
+}
+
+#gameBox{
+    grid-area: gameBox;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    box-shadow: 0 0 20px rgba(54, 54, 54, 0.8);
+}
+h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    margin: 10px 10px;
+    box-shadow: 2px 2px rgba(54, 54, 54, 0.25);
+}
+
+#start {                                                /* addition of start and restart buttons to create a repeatable game */
+    grid-row: 1;
+    grid-column: 1;
+    padding: 1em;
+    margin: 10px 10px;
+    cursor: pointer;
+    box-shadow: 2px 2px rgba(54, 54, 54, 0.25);
+}
+#restart{
+    grid-row: 1;
+    grid-column: 1;
+    padding: 1em;
+    margin: 10px 10px;
+    cursor: pointer;
+    box-shadow: 2px 2px rgba(54, 54, 54, 0.25);
+}
+
+
+/* .id{
+    modify for adjusted content
+} */
+.grid{                                                  /* linked to the grid id in the main html */
+    display: flex;
+    flex-wrap: wrap;                                    /* works with our plan to push the various "enemy" objects into rows that get pushed down - instead of having to make a large section with columns and grids, we just have one large line that gets wrapped based
+                                                            on our width/height */
+    border: solid 1px;
+    width: 300px;                                       /* needs to be divisible by the number of columns we're aiming for - in our case because our grid is 15*15, we need to be able to divide both our width and height by 15 */
+    height: 300px;
+    background-color: rgb(54, 54, 54);
+    background-image: url(/SpessInvaders/Assets/background.gif);
+    padding: 1em;
+    margin: 5px;
+    }
+
+.grid div {                                             /* linked to all the <div> components within the grid id, but not any others */
+    width: 20px;                                        /* this is out grid width/column count (300/15), means that after 15 objects, the line is then wrapped over itself into a new one thanks to the flex wrap */
+    height: 20px;
+}
+
+.shooter {
+    /* content:url(https://picsum.photos/200/300)           placeholder test to check image integration - because this is resized to fit out element we thankfully don't need to figure out pixel widths */
+    content:url(/SpessInvaders/Assets/pdc.gif)              /* utilising the hidden image within the html as our 'pdc' */
+
+}
+.invader {                                                  /* removed background colours as no longer needed for troubleshooting */
+    border-radius: 10px;
+    content:url(/SpessInvaders/Assets/torpedo.gif)
+}
+
+.boom {
+    content:url(/SpessInvaders/Assets/boom.gif)
+}
+
+.laser {
+    content:url(/SpessInvaders/Assets/pdcBullet.png)
+}
+
+/* will want to consider better background options, as well as potentially looking into audio/video playback for victory/initial etc. [background video & styling only] */
+
+@media (max-width: 900px) and (min-width:801px) { 
+    #discussion {
+        background-color: #2b2b2b4d;
+        padding: 1em;
+        color: aliceblue;
+        box-shadow: 5px 5px #30303085; 
+        text-shadow: 1px 2px 2px black;
+    }
+}
+
+@media (max-width: 700px) {
+    #discussion {
+        background-color: #2b2b2b4d;
+        padding: 1em;
+        color: aliceblue;
+        box-shadow: 5px 5px #30303085; /* Creates an additional 3D effect by adding a drop-shadow to the bottom and right sides of each div box */
+        text-shadow: 1px 2px 2px black;
+    }
+}
